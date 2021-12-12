@@ -1,0 +1,10 @@
+  - hosts: nginx
+    become: yes
+    roles: 
+    - role: nginx
+
+  - hosts: haproxy
+    become: yes
+    roles: 
+    - role: haproxy
+    - role: keepalived

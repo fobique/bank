@@ -1,0 +1,32 @@
+- name: update                              # obnovlyaem dannye o dostupnyh versiyah
+  dnf: 
+    update_cache: yes
+
+- name: upgrade_nginx                       # obnovlyaem nginx
+  dnf:
+    name: nginx
+    state: present
+
+- name: port_80_open                        # otkryvaem 80 port 
+  firewalld: 
+    state: enabled
+    port: 80/tcp
+    permanent: yes
+
+#  - name: nginx_conf_template                 # sozdaem nginx.conf
+#    template:
+#      src: templates/nginx.conf
+#      dest: /etc/nginx/nginx.conf
+#      mode: '0744'
+
+#  - name: index_html_template                 # sozdaem index.html
+#    template:
+#      src: templates/index.html
+#      dest: /sites/index.html
+#      mode: '0744'
+
+#  - name: nginx_systemd                       # zapuskaem nginx
+#    system:
+#      name: nginx
+#      enabled: yes
+#      state: started
